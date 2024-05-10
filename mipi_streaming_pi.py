@@ -11,28 +11,6 @@ lowresSize = (1024, 576)    # low resolution for the streaming
 
 app = Flask(__name__, static_folder='templates/assets')
 
-def now():
-    return round(time.time() * 1000)
-
-def get_webcams():
-    port_ids = []
-    for port in range(5):
-        print("Looking for a camera in port %s:" %port)
-        camera = cv2.VideoCapture(port)
-        if camera.isOpened():
-            ret = camera.read()[0]
-            if ret:
-                backendName =camera.getBackendName()
-                w = camera.get(3)
-                h = camera.get(4)
-                print("Camera %s (%s x %s) found in port %s " %(backendName,h,w, port))
-                port_ids.append(port)
-            camera.release()
-    return port_ids
-
-def help():
-    print('python classify.py <path_to_model.eim> <Camera port ID, only required when more than 1 camera is present>')
-
 def main(argv):
 
     picam2 = Picamera2()
@@ -42,7 +20,7 @@ def main(argv):
     picam2.configure(config)
 
     stride = picam2.stream_configuration("lores")["stride"]
-    
+
     picam2.start()
 
     while True:
@@ -55,8 +33,6 @@ def main(argv):
         frame = buffer.tobytes()
         yield (b'--frame\r\n'
             b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')  # concat frame one by one and show result
-
-
 
 
 @app.route('/video_feed')
