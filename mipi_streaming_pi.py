@@ -41,13 +41,13 @@ def main(argv):
     #config = picam2.create_preview_configuration(main={"size": normalSize},lores={"size": lowresSize, "format": "YUV420"})
     #picam2.configure(config)
 
-    stride = picam2.stream_configuration("lores")["stride"]
+    stride = picam2.stream_configuration()
     #picam2.post_callback = DrawRectangles
 
     picam2.start()
 
     while True:
-        buffer = picam2.capture_array("lores")
+        buffer = picam2.capture_array()
         rgb = cv2.cvtColor(buffer, cv2.COLOR_YUV420p2RGB)
         #grey = buffer[:stride * lowresSize[1]].reshape((lowresSize[1], stride))
         (ret, buffer) = cv2.imencode('.jpg', rgb) #change rgb to grey for grayscale streaming
