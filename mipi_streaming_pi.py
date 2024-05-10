@@ -6,8 +6,8 @@ import sys, getopt
 from flask import Flask, render_template, Response
 from picamera2 import MappedArray, Picamera2, Preview
 
-normalSize = (1920, 1080)
-lowresSize = (1024, 576)
+normalSize = (1920, 1080)   # original camera resolution preview
+lowresSize = (1024, 576)    # low resolution for the streaming
 
 app = Flask(__name__, static_folder='templates/assets')
 
@@ -36,14 +36,13 @@ def help():
 def main(argv):
 
     picam2 = Picamera2()
-    #picam2.start_preview(Preview.DRM, x=0, y=0, width=1920, height=1080)
-    picam2.start_preview(Preview.NULL)
+    #picam2.start_preview(Preview.DRM, x=0, y=0, width=1920, height=1080) # uncomment this line if you have an HDMI display connected and want to preview the streaming on it.
+    picam2.start_preview(Preview.NULL)  # disable HDMI preview. Comment this if you have an HDMI display
     config = picam2.create_preview_configuration(main={"size": normalSize},lores={"size": lowresSize, "format": "YUV420"})
     picam2.configure(config)
 
     stride = picam2.stream_configuration("lores")["stride"]
-    #picam2.post_callback = DrawRectangles
-
+    
     picam2.start()
 
     while True:
