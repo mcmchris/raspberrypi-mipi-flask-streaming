@@ -40,3 +40,4 @@ python3 mipi_streaming_pi.py
 Enter the shown IP and port on your favorite web  browser to start the streaming:
 
 ![](assets/running.png)
+
