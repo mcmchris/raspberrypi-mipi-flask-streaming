@@ -14,8 +14,8 @@ app = Flask(__name__, static_folder='templates/assets')
 def main(argv):
 
     picam2 = Picamera2()
-    #picam2.start_preview(Preview.DRM, x=0, y=0, width=1920, height=1080) # uncomment this line if you have an HDMI display connected and want to preview the streaming on it.
-    picam2.start_preview(Preview.NULL)  # disable HDMI preview. Comment this if you have an HDMI display
+    picam2.start_preview(Preview.DRM, x=0, y=0, width=1920, height=1080) # uncomment this line if you have an HDMI display connected and want to preview the streaming on it.
+    #picam2.start_preview(Preview.NULL)  # disable HDMI preview. Comment this if you have an HDMI display
     config = picam2.create_preview_configuration(main={"size": normalSize},lores={"size": lowresSize, "format": "YUV420"})
     picam2.configure(config)
 
