@@ -7,7 +7,7 @@ from flask import Flask, render_template, Response
 from picamera2 import Picamera2, Preview
 
 # Full sensor resolution for IMX219
-sensor_full = (3280, 2464)
+sensor_full = (1920, 1080)
 
 # Target output resolution (aspect-ratio preserved with padding)
 output_size = (191, 191)
