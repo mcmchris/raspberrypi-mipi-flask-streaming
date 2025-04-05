@@ -16,7 +16,7 @@ output_size = (191, 191)
 app = Flask(__name__, static_folder='templates/assets')
 
 
-def resize_and_pad(img, target_size=(640, 480)):
+def resize_and_pad(img, target_size=output_size):
     h, w = img.shape[:2]
     target_w, target_h = target_size
     scale = min(target_w / w, target_h / h)
