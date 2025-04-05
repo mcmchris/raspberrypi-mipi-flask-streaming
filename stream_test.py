@@ -79,3 +79,17 @@ def index():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=4912, debug=False)
+
+"""
+
+0 : imx219 [3280x2464 10-bit RGGB] (/base/soc/i2c0mux/i2c@1/imx219@10)
+    Modes: 'SRGGB10_CSI2P' : 640x480 [103.33 fps - (1000, 752)/1280x960 crop]
+                             1640x1232 [41.85 fps - (0, 0)/3280x2464 crop]
+                             1920x1080 [47.57 fps - (680, 152)/1920x2160 crop]
+                             3280x2464 [21.19 fps - (0, 0)/3280x2464 crop]
+           'SRGGB8' : 640x480 [103.33 fps - (1000, 752)/1280x960 crop]
+                      1640x1232 [41.85 fps - (0, 0)/3280x2464 crop]
+                      1920x1080 [47.57 fps - (680, 152)/1920x2160 crop]
+                      3280x2464 [21.19 fps - (0, 0)/3280x2464 crop]
+
+"""
