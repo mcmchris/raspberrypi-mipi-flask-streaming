@@ -9,7 +9,7 @@ from picamera2 import Picamera2, Preview
 sensor_full = (3280, 2464)
 
 # Target resolution for streaming
-output_size = (640, 480)
+output_size = (191, 191)
 
 # Initialize Flask app
 app = Flask(__name__, static_folder='templates/assets')
